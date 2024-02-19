@@ -1,17 +1,17 @@
 from locust import HttpUser, task, between
 import requests
 import random
+session = requests.Session()
 #Put your stream master file address here
-master_url = "https://example.com/TEST/STREAM/master.m3u8"
+master_url =  "https://example.com/TEST/STREAM/master.m3u8"
 session_url = master_url.rsplit('/', 1)[0]
-master_response = self.session.get(master_url)
+master_response = session.get(master_url)
 master_content = master_response.text
 quality_list = [x for x in master_content.split('\n') if 'index.m3u8' in x]
 
 class HLSUser(HttpUser):
     wait_time = between(1, 2)
     session = requests.Session()
-
     @task
     def get_variant_playlist(self):
         try:

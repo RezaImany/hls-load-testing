@@ -8,6 +8,7 @@ I'm happy to share this solution that I believe solves a common challenge for HL
 
 
 #Docker Compose
+
 As you may know, Locust is a single-threaded load testing tool. To leverage multi-threading and distributed loads, I've created a Docker Compose configuration that runs Locust in master-worker mode.
 
 This Docker setup separates the single Locust master node from multiple worker nodes. Making workers scalable facilitates straightforward distributed load testing.
